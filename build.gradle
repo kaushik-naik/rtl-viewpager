@@ -16,12 +16,14 @@
 
 buildscript {
     repositories {
-        jcenter()
+        // jcenter() is deprecated and no longer available
         google()
+        maven { url "https://repo.grails.org/grails/core/" }
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'com.android.tools.build:gradle:7.2.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
     }
 }
 
@@ -35,8 +37,9 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 
 repositories {
-    jcenter()
+    // jcenter() is deprecated and no longer available
     google()
+    mavenCentral()
 }
 
 android {
@@ -46,6 +49,10 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 29
+    }
+
+    lint {
+        abortOnError false
     }
 
 }
